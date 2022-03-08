@@ -1,0 +1,54 @@
+<html>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+<title>
+    College recommendation
+</title>
+<script>
+    function grabFormDetail() {
+        percentage = document.getElementById("percentageId").value;
+        fee = document.getElementById("feeId").value;
+        attendance = document.getElementById("attendanceId").value;
+        submit_url = "{% url 'recommendation-page' %}" + "?fee=" + fee + "&attendance=" + attendance + "&percentage=" + percentage;
+        window.open(submit_url, "_self")
+    }
+</script>
+<div style="padding: 20px;">
+    <p class="h3" style="text-align: center;">college recommendation system</p>
+    <br>
+    <div style="padding: 50px">
+        <p class="h5">Form for college recommendation</p>
+        <br>
+        {% csrf_token %}
+        <div class="mb-3">
+            <div style="padding-right: 900px;">
+                <!-- exams percentage -->
+                <label for="exampleFormControlInput1" class="form-label">exams percentage</label>
+                <input type="text" class="form-control" id="percentageId"
+                    placeholder="percentage obtained in final year exams">
+                <br>
+                <!-- fee -->
+                <label for="exampleFormControlInput1" class="form-label">Expected college fee</label>
+                <input type="text" class="form-control" id="feeId"
+                    placeholder="Fee in range of Rs. 5,00,000 - Rs. 20,00,000">
+                <br>
+                <!-- attendance -->
+                <label for="exampleFormControlInput1" class="form-label">Attendance</label>
+                <input type="text" class="form-control" id="attendanceId"
+                    placeholder="Your average attendance in perctange">
+                <br>
+            </div>
+            <!-- submit button -->
+            <button type="button" class="btn btn-primary" id="submit" onclick="grabFormDetail()">Recommend
+                college</button>
+
+        </div>
+    </div>
+</div>
+
+</html>
